@@ -1,0 +1,37 @@
+[
+{
+    "slug": "2026-07-01-software-glossary",
+    "title": "Software Glossary",
+    "date": "July 01, 2026",
+    "category": "Software",
+    "summary": "Glossary of Software Terms"
+  },
+{
+    "slug": "2026-06-30-networking-glossary",
+    "title": "Networking Glossary",
+    "date": "June 30, 2026",
+    "category": "Networking",
+    "summary": "Glossary of Networking Terms"
+  },
+{
+  "slug": "2026-06-29-technical-review-and-completing-os-fundamentals",
+"title": "Technical Review & Completing OS Fundamentals",
+"date": "June 29, 2026",
+"category": "Fundamentals",
+"summary": "Completed the OS Fundamentals module, passing an interactive architectural review on kernel mechanics and provisioning live Windows and Linux virtual machines via Qwiklabs."
+},
+{
+  "slug": "2026-06-26-building-and-deploying-decoupled-nextjs-portfolio",
+  "title": "Building and Deploying a Decoupled Next.js Technical Portfolio via Nginx and SSH",
+  "date": "June 26, 2026",
+  "category": "System Administration",
+  "summary": "An end-to-end breakdown of engineering a Markdown-driven portfolio, optimizing state-managed client routing, isolating content via JSON, and resolving enterprise web-server directory traversal constraints."
+},
+  {
+    "slug": "2026-06-25-fundamentals-glossary",
+    "title": "Fundamentals Glossary",
+    "date": "June 25, 2026",
+    "category": "Fundamentals",
+    "summary": "Glossary of Common Terms"
+  }
+]
