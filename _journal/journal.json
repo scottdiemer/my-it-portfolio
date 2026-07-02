@@ -1,5 +1,12 @@
 [
 {
+    "slug": "2026-07-02-deployment-automation-and-ssh-restoration",
+    "title": "Automating Deployments, Restoring GitHub SSH Access, and System Administration Training",
+    "date": "July 02, 2026",
+    "category": "System Administration",
+    "summary": "Troubleshooting a custom deployment bash script, resolving sudden git authentication failures caused by inactive SSH key pruning, and advancing through core IT infrastructure and software modules."
+  },
+{
     "slug": "2026-07-01-software-glossary",
     "title": "Software Glossary",
     "date": "July 01, 2026",
