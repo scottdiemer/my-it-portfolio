@@ -1,4 +1,11 @@
 [
+    {
+  "slug": "2026-07-03-upgrades-configurations-and-completing-it-fundamentals",
+  "title": "Upgrades, Configurations, and Completing IT Fundamentals",
+  "date": "July 03, 2026",
+  "category": "Learning Path",
+  "summary": "A productive sprint upgrading my Ubuntu server, refining my Neovim environment, fixing Next.js markdown rendering, and completing the first course of the Google IT Support Professional Certificate."
+},
 {
     "slug": "2026-07-02-deployment-automation-and-ssh-restoration",
     "title": "Automating Deployments, Restoring GitHub SSH Access, and System Administration Training",
