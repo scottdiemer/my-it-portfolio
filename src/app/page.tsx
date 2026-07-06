@@ -1,110 +1,124 @@
-import TechCard from '@/components/TechCard';
-import journalData from '../../_journal/journal.json'; // Import the centralized data feed
+import Link from 'next/link';
+import TerminalName from '@/components/TerminalName';
 
 export default function HomePage() {
-  // Pull the top 3 items cleanly straight from the isolated data layer
-  const recentPosts = journalData.slice(0, 3);
-  
-  // ... Keep all of your existing skillSets array and layout UI blocks identical down below ...
-  const skillSets = [
-    {
-  title: "Core Infrastructure & OS",
-  description: "Years of native experience utilizing Linux as a primary desktop environment alongside professional endpoint management frameworks.",
-  tags: ["Linux (Daily Driver)", "Bash Scripting", "Windows 10/11", "Virtualization", "SysInternals"]
-},
-    {
-      title: "Networking & Troubleshooting",
-      description: "Understanding network architecture, routing protocols, and tools required to resolve connectivity faults.",
-      tags: ["TCP/IP", "DNS/DHCP", "IPv4/IPv6 Subnetting", "Wireshark", "Ping/Traceroute"]
-    },
-    {
-      title: "Operations & Client Success",
-      description: "Leveraging 30+ years of operational service to offer premium technical communication and ticket management.",
-      tags: ["SLA Compliance", "Incident Management", "Technical Documentation", "De-escalation"]
-    }
-  ];
-
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12 space-y-24">
-     {/* Hero Section */}
-	<section id="about" className="py-8 max-w-3xl">
-  		<span className="text-xs font-mono tracking-widest uppercase text-blue-500 bg-blue-950/50 px-3 py-1 rounded-full border border-blue-900/50">
-    Career Pivot // IT Support
-  		</span>
-  		<h1 className="text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight">
-    Combining Decades of Human Connection with <span className="text-blue-400">Technical Execution.</span>
-  		</h1>
-  			<p className="mt-6 text-lg text-slate-400 leading-relaxed">
-    After a robust 35-year foundation driving client satisfaction and cross-functional operations, I am formalizing my technical capabilities via the <strong>Grow With Google IT Support Specialist Certificate</strong>. Backed by years of hands-on experience utilizing Linux as my sole daily desktop operating system, I engineer secure, documentation-first technical solutions for enterprise environments.
-  			</p>
-	</section>
+    <div className="max-w-3xl mx-auto px-4 py-12 space-y-12 text-slate-800 dark:text-slate-200">
+      
+      {/* Header Section */}
+      <header className="space-y-4">
+        {/* Animated Terminal Title */}
+        <TerminalName />
+        
+        <p className="text-xl font-medium text-blue-600 dark:text-blue-400">
+          IT Support Specialist | Systems & Infrastructure Troubleshooting
+        </p>
+        <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+          Welcome to my technical portfolio. I am a systems-focused IT professional who combines an extensive background in operational leadership with a modern, hands-on technical toolkit. My career has been defined by complex problem-solving, managing operational efficiency, and translating technical issues into clear solutions.
+        </p>
+      </header>
 
-      {/* Skills Section */}
-      <section id="skills" className="space-y-6 scroll-mt-20">
-        <div>
-          <h2 className="text-2xl font-bold text-white tracking-tight">Technical & Professional Competency</h2>
-          <p className="text-sm text-slate-400 mt-1">Core competencies built via enterprise experience and specialized IT coursework.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {skillSets.map((skill, index) => (
-            <TechCard key={index} title={skill.title} description={skill.description} tags={skill.tags} />
-          ))}
+      <hr className="border-slate-200 dark:border-slate-800" />
+
+      {/* Technical Stack Section */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+          Technical Core
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Operating Systems</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400">
+              <li>Linux (Ubuntu Server/Desktop)</li>
+              <li>Neovim Customization</li>
+              <li>Windows Ecosystem</li>
+            </ul>
+          </div>
+          <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Infrastructure & Web</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400">
+              <li>Nginx Web Server</li>
+              <li>Next.js Framework</li>
+              <li>Markdown Documentation</li>
+            </ul>
+          </div>
+          <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Support Methodology</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-400">
+              <li>Troubleshooting Frameworks</li>
+              <li>SLA & Escalation Care</li>
+              <li>Technical Documentation</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Learning Journal Preview Section */}
-      <section id="journal" className="space-y-6 scroll-mt-20">
-        <div className="flex justify-between items-end">
-          <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight">Recent Documentation Logs</h2>
-            <p className="text-sm text-slate-400 mt-1">Real-time snapshots of my ongoing technical configurations and training modules.</p>
-          </div>
-          <a 
-            href="/journal" 
-            className="text-xs font-mono text-blue-400 hover:text-blue-300 border border-blue-900/60 bg-blue-950/20 px-3 py-2 rounded-lg hover:border-blue-500/50 transition-all hidden sm:block"
+      <hr className="border-slate-200 dark:border-slate-800" />
+
+      {/* Highlighted Project/Journal Logs */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+            Featured Milestones
+          </h2>
+          <Link href="/journal" className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">
+            View all entries →
+          </Link>
+        </div>
+        
+        <div className="space-y-4 pt-2">
+          {/* Milestone 1 */}
+          <Link 
+            href="/journal/it-support-fundamentals-complete" 
+            className="block p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-blue-500 dark:hover:border-blue-400 transition-all group"
           >
-            View All Archives &rarr;
-          </a>
-        </div>
-
-        {recentPosts.length === 0 ? (
-          <div className="bg-slate-900/50 border border-slate-900 rounded-xl p-8 text-center text-slate-500 font-mono text-sm">
-            No logs added yet. Add a .md file to the _journal folder to populate this automatically.
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {recentPosts.map((post) => (
-              <a 
-                key={post.slug} 
-                href={`/journal/${post.slug}`}
-                className="block bg-slate-900/40 border border-slate-900/60 hover:border-slate-800 rounded-xl p-6 transition-all group"
-              >
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <span className="text-xs font-mono text-blue-500 uppercase">{post.category}</span>
-                    <h3 className="text-lg font-bold text-white mt-1 group-hover:text-blue-400 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">
-                      {post.summary}
-                    </p>
-                  </div>
-                  <span className="text-xs font-mono text-slate-600 whitespace-nowrap mt-1">{post.date}</span>
-                </div>
-              </a>
-            ))}
-            
-            <div className="sm:hidden pt-2">
-              <a 
-                href="/journal" 
-                className="block text-center text-xs font-mono text-blue-400 border border-blue-900/60 bg-blue-950/20 py-3 rounded-lg"
-              >
-                View All Archives &rarr;
-              </a>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold tracking-wide uppercase px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                Certification
+              </span>
+              <span className="text-xs text-slate-400">July 2026</span>
             </div>
-          </div>
-        )}
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              Completed: IT Support Fundamentals & Troubleshooting Module
+            </h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+              Passed the core troubleshooting module covering best practices, customer handling, documentation standards, and technical interview frameworks.
+            </p>
+          </Link>
+
+          {/* Milestone 2 */}
+          <Link 
+            href="/journal/portfolio-infrastructure-setup" 
+            className="block p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-blue-500 dark:hover:border-blue-400 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold tracking-wide uppercase px-2 py-1 rounded bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">
+                Infrastructure
+              </span>
+              <span className="text-xs text-slate-400">June 2026</span>
+            </div>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              Deploying scottdiemer.com on Ubuntu & Nginx
+            </h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+              A deep dive into setting up our Next.js environment production build, managing local SSH keys, and serving static assets securely via an Nginx reverse proxy.
+            </p>
+          </Link>
+        </div>
       </section>
+
+      <hr className="border-slate-200 dark:border-slate-800" />
+
+      {/* Context Quote / Close */}
+      <section className="space-y-4">
+        <div className="border-l-4 border-blue-500 pl-4 my-4 italic text-lg text-slate-700 dark:text-slate-300">
+          "Many entry-level IT candidates can configure a setting, but few understand how technical downtime impacts an organization's bottom line."
+        </div>
+        <p className="text-base leading-relaxed text-slate-600 dark:text-slate-400">
+          Throughout my professional journey, I have managed high-stakes operations, led teams, and served as the default technical point person for hardware, software, and POS deployments. I built this portfolio—from the underlying Nginx configuration to the Markdown-driven journal—to document my continuous upskilling and to showcase my approach to real-world technical challenges.
+        </p>
+      </section>
+
     </div>
   );
 }
