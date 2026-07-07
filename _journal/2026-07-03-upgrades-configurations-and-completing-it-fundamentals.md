@@ -1,6 +1,6 @@
 ---
 title: "Upgrades, Configurations, and Completing IT Fundamentals"
-date: "2026-07-03"
+date: "July 3, 2026"
 category: "Learning Path"
 summary: "A productive sprint upgrading my Ubuntu server, refining my Neovim environment, fixing Next.js markdown rendering, and completing the first course of the Google IT Support Professional Certificate."
 ---

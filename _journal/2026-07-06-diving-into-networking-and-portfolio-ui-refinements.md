@@ -1,6 +1,6 @@
 ---
 title: "Diving into Networking and Homepage UI Refinements"
-date: "2026-07-06"
+date: "July 6, 2026"
 category: "Learning Path"
 summary: "Started Course 2 of the Google IT Support Certificate focusing on the TCP/IP model, while pushing new terminal animations, milestone links, and navigation fixes to the homepage."
 ---
