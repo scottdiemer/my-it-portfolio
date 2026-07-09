@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script"; // <-- 1. Import the Script component
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Scott Diemer | IT Support Specialist",
