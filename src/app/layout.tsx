@@ -1,5 +1,6 @@
 import './globals.css'; 
 import { Inter } from 'next/font/google';
+import Script from 'next/script'; 
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,6 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-slate-950 text-slate-100 scroll-smooth">
+      <head>
+        {/* 2. SAFE ADDITION: Your Umami Cloud Tracking Tag nested safely in head */}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="7420e08c-9fdc-47dd-9452-d683df642cb4"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className={`${inter.className} min-h-screen flex flex-col justify-between`}>
         <header className="border-b border-slate-900 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
