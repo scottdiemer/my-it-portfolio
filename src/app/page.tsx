@@ -19,12 +19,12 @@ export default function HomePage() {
       </header>
 
       <hr className="border-slate-200 dark:border-slate-800" />
+{/* Technical Stack Section */}
+<section id="skills" className="space-y-4 scroll-mt-6">
+  <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+    Technical Core
+  </h2>
 
-      {/* Technical Stack Section */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
-          Technical Core
-        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
           <div className="p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
             <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Operating Systems</h3>
