@@ -6,7 +6,7 @@ export default function HomePage() {
     <div className="max-w-3xl mx-auto px-4 py-12 space-y-12 text-slate-800 dark:text-slate-200">
       
       {/* Header Section */}
-      <header className="space-y-4">
+      <header id="about" className="space-y-4">
         {/* Animated Terminal Title */}
         <TerminalName />
         
