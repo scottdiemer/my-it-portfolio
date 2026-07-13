@@ -11,7 +11,7 @@ git pull origin main
 # Check if package.json changed, if so install new packages
 # (Using --legacy-peer-deps to bypass React/Next version conflict)
 echo "Installing any new dependencies..."
-npm install --legacy-peer-deps
+npm ci
 
 echo "Build the production Next.js application..."
 npm run build
