@@ -1,7 +1,7 @@
 ---
 title: "Portfolio Journal: Demystifying the Network Layer & Subnetting"
 date: July 13, 2026
-tags: "learning-journal"
+category: "learning-journal"
 summary: "Completed the Network Layer and Subnetting modules in the Grow with Google IT Support course, covering IPv4 encapsulation, ARP, binary math, and CIDR notation, and earned 100% on both practice assessments."
 ---
 
