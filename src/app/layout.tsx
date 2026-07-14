@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-slate-950 text-slate-100 scroll-smooth">
+    <html lang="en" data-scroll-behavior="smooth" className="bg-slate-950 text-slate-100">
       <head>
         {/* 2. SAFE ADDITION: Your Umami Cloud Tracking Tag nested safely in head */}
         <Script

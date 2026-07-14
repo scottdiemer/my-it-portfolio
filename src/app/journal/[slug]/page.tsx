@@ -2,7 +2,7 @@ import { getPostBySlug, getJournalPosts } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Next.js 14 Static Generation Hook
@@ -20,11 +20,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function JournalPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function JournalPostPage({ params }: Props) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+
+  const post = getPostBySlug(slug);
 
   // Allow the placeholder or missing files to degrade gracefully to a 404 instead of crashing the site build
-  if (!post || params.slug === 'placeholder') {
+  if (!post || slug === 'placeholder') {
     notFound();
   }
 
