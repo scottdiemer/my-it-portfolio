@@ -6,6 +6,7 @@ summary: "A chronicle of a 48-hour battle against a corrupted Windows 11 Enterpr
 ---
 
 # Lab Journal Entry
+
 **Project**: Windows 11 Enterprise Client VM Troubleshooting & Recovery
 
 **Date Range**: July 16, 2026 – July 17, 2026
