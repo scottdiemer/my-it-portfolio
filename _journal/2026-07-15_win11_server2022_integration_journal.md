@@ -5,9 +5,8 @@ category: "System Administatrion"
 summary: "A hands-on guide resolving modern user-space software installation loopholes (Firefox AppData) by joining a Windows 11 Enterprise VM to a Windows Server 2022 domain controller, organizing the Active Directory OU structure, and enforcing kernel-level block policies using AppLocker."
 ---
 
-# Systems Administration Journal: Windows Server 2022 & Windows 11 Enterprise Lab Integration
-**Date**: July 15, 2026
 **Environment**: QEMU/KVM Hypervisor, Windows Server 2022 Datacenter (Domain Controller), Windows 11 Enterprise (Client Workstation).
+
 **Domain Infrastructure**: `home.lab` (NetBIOS: `HOME`)
 
 ## 1. Provisioning the Workstation & OS Bypass
