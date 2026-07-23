@@ -1,103 +1,96 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
-interface Post {
+export interface Post {
   slug: string;
   title: string;
   date: string;
-  category: string;
+  category: string[];
   summary: string;
+  content?: string;
+}
+
+interface JournalArchiveClientProps {
+  initialPosts: Post[];
 }
 
 export default function JournalArchiveClient({
   initialPosts,
-}: {
-  initialPosts: Post[];
-}) {
+}: JournalArchiveClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  // Extract categories dynamically right out of your real markdown data
-  const categories = [
+  // Flatten all category arrays and extract unique names
+  const allCategories = [
     "All",
-    ...Array.from(new Set(initialPosts.map((post) => post.category))),
+    ...Array.from(new Set(initialPosts.flatMap((post) => post.category))),
   ];
 
+  // Calculate matching posts for category badges/counts
+  const getCategoryCount = (catName: string) => {
+    if (catName === "All") return initialPosts.length;
+    return initialPosts.filter((post) => post.category.includes(catName))
+      .length;
+  };
+
+  // Filter posts based on selected category
   const filteredPosts =
     selectedCategory === "All"
       ? initialPosts
-      : initialPosts.filter((post) => post.category === selectedCategory);
+      : initialPosts.filter((post) => post.category.includes(selectedCategory));
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
-      <div>
-        <span className="text-xs font-mono tracking-widest uppercase text-blue-500 bg-blue-950/50 px-3 py-1 rounded-full border border-blue-900/50">
-          Archive
-        </span>
-        <h1 className="text-4xl font-extrabold text-white mt-4 tracking-tight">
-          The Technical Journal
-        </h1>
-        <p className="mt-2 text-slate-400 max-w-2xl">
-          A running history of my hands-on enterprise troubleshooting labs,
-          system configurations, and deep-dives.
-        </p>
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap gap-2 justify-center pb-6 border-b border-zinc-800">
+        {allCategories.map((cat, index) => {
+          const isActive = selectedCategory === cat;
+          return (
+            <button
+              key={`${cat}-${index}`}
+              onClick={() => setSelectedCategory(cat)}
+              className={`text-xs font-mono px-3 py-1.5 rounded-md border transition-all cursor-pointer ${
+                isActive
+                  ? "bg-blue-500 text-white border-blue-400 font-bold shadow-md shadow-blue-500/20"
+                  : "bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-zinc-200"
+              }`}
+            >
+              {cat} ({getCategoryCount(cat)})
+            </button>
+          );
+        })}
       </div>
 
-      {/* Interactive Filter Controls */}
-      <div className="border-b border-slate-900 pb-6">
-        <span className="text-xs font-mono text-slate-500 uppercase block mb-3">
-          Filter by Stream:
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat, index) => {
-            const count =
-              cat === "All"
-                ? initialPosts.length
-                : initialPosts.filter((p) => p.category === cat).length;
-            const isActive = selectedCategory === cat;
-
-            return (
-              <button
-                key={`${cat}-${index}`}
-                onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-mono px-3 py-1.5 rounded-md border transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-blue-500 text-white border-blue-400 font-bold shadow-md shadow-blue-500/20"
-                    : "bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white"
-                }`}
-              >
-                {cat} ({count})
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Filtered Archives Feed */}
-      <div className="space-y-4">
+      {/* Posts List */}
+      <div className="grid gap-6">
         {filteredPosts.map((post) => (
-          <a
+          <article
             key={post.slug}
-            href={`/journal/${post.slug}`}
-            className="block bg-slate-900/40 border border-slate-900/60 hover:border-slate-800 rounded-xl p-6 transition-all group"
+            className="p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700/80 transition-all group"
           >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-              <div>
-                <span className="text-xs font-mono text-blue-500 uppercase">
-                  {post.category}
-                </span>
-                <h3 className="text-lg font-bold text-white mt-1 group-hover:text-blue-400 transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-                  {post.summary}
-                </p>
-              </div>
-              <span className="text-xs font-mono text-slate-600 whitespace-nowrap md:mt-1">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <span className="text-xs font-mono text-zinc-500">
                 {post.date}
               </span>
+              <div className="flex flex-wrap gap-1.5">
+                {post.category.map((c) => (
+                  <span
+                    key={c}
+                    className="text-[10px] font-mono uppercase tracking-wider text-blue-400 bg-blue-950/40 border border-blue-900/50 px-2 py-0.5 rounded"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
-          </a>
+            <h2 className="text-xl font-bold text-zinc-100 group-hover:text-blue-400 transition-colors mb-2">
+              <Link href={`/journal/${post.slug}`}>{post.title}</Link>
+            </h2>
+            <p className="text-sm text-zinc-400 leading-relaxed">
+              {post.summary}
+            </p>
+          </article>
         ))}
       </div>
     </div>

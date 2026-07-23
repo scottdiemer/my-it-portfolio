@@ -1,7 +1,7 @@
 ---
 title: "Deploying and Hardening a Self-Hosted Mailcow Mail Server"
 date: "July 21, 2026"
-category: "Systems Administration"
+category: ["Systems Administration", "Networking"]
 summary: "Documented the deployment of a containerized Mailcow mail server (Postfix, Dovecot, Rspamd) on an Ubuntu VPS, including osTicket integration, Postfix IPv4 routing adjustments, and full DNS authentication hardening (SPF, DKIM, DMARC, and PTR) to achieve a 10/10 mail deliverability score."
 ---
 

@@ -4,7 +4,14 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "_journal"); // Verify this matches your markdown folder name (e.g., 'posts' or 'journal')
+const postsDirectory = path.join(process.cwd(), "_journal");
+
+// Helper function to ensure category is always returned as a string array
+function normalizeCategories(categoryData: any): string[] {
+  if (!categoryData) return ["Uncategorized"];
+  if (Array.isArray(categoryData)) return categoryData;
+  return [categoryData];
+}
 
 // 1. Get a single post by its slug (used to render the article)
 export function getPostBySlug(slug: string) {
@@ -25,7 +32,7 @@ export function getPostBySlug(slug: string) {
       content: contentHtml,
       title: data.title,
       date: data.date,
-      category: data.category,
+      category: normalizeCategories(data.category), // Always returns string[]
       summary: data.summary,
     };
   } catch (error) {
@@ -54,7 +61,7 @@ export function getJournalPosts() {
           slug,
           title: data.title,
           date: data.date,
-          category: data.category,
+          category: normalizeCategories(data.category), // Always returns string[]
           summary: data.summary,
         };
       });
