@@ -1,7 +1,7 @@
 ---
 title: "Systems Administration Journal: Windows Server 2022 & Windows 11 Enterprise Lab Integration"
 date: "July 15, 2026"
-category: "System Administatrion"
+category: "Systems Administatrion"
 summary: "A hands-on guide resolving modern user-space software installation loopholes (Firefox AppData) by joining a Windows 11 Enterprise VM to a Windows Server 2022 domain controller, organizing the Active Directory OU structure, and enforcing kernel-level block policies using AppLocker."
 ---
 
