@@ -5,12 +5,11 @@ category: "System Administration"
 summary: "An end-to-end breakdown of engineering a Markdown-driven portfolio, optimizing state-managed client routing, isolating content via JSON, and resolving enterprise web-server directory traversal constraints."
 ---
 
-# Building and Deploying a Decoupled Next.js Technical Portfolio via Nginx and SSH
-
 **Author:** Scott Patrick Diemer  
-**Project Destination:** scottdiemer.com  
+**Project Destination:** scottdiemer.com
 
 ### System Architecture Overview
+
 ...
 The objective of this project was to engineer a high-performance, secure portfolio platform capable of showcasing hands-on engineering documentation and enterprise lab logs. The system is split into three decoupled operational layers:
 
@@ -31,7 +30,6 @@ To maintain clean performance and visual spacing on the homepage landing view, t
 ```typescript
 // Slicing the metadata array down to a preview dashboard size inside src/app/page.tsx
 const recentPosts = journalData.slice(0, 3);
-
 ```
 
 ### 2. Decoupling Content via Local JSON Databases
@@ -69,7 +67,6 @@ To prevent modifications to production React source code whenever a new log entr
     "summary": "An end-to-end breakdown of engineering a Markdown-driven portfolio, optimizing state-managed client routing, isolating content via JSON, and resolving enterprise web-server directory traversal constraints."
   }
 ]
-
 ```
 
 ### 3. State-Managed Client Routing
@@ -88,8 +85,8 @@ export default function JournalArchivePage() {
   // Dynamically extract unique categories directly from the isolated JSON database
   const categories = ['All', ...Array.from(new Set(journalData.map(post => post.category)))];
 
-  const filteredPosts = selectedCategory === 'All' 
-    ? journalData 
+  const filteredPosts = selectedCategory === 'All'
+    ? journalData
     : journalData.filter(post => post.category === selectedCategory);
 
   return (
@@ -120,15 +117,14 @@ Updated local **`next.config.mjs`**:
 ```javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: "export",
   trailingSlash: true, // Forces production build paths to export cleanly as /directory/index.html
-  images: { 
-    unoptimized: true 
+  images: {
+    unoptimized: true,
   },
 };
 
 export default nextConfig;
-
 ```
 
 ### 2. Compilation & Secure Copy Transport Protocol (SCP)

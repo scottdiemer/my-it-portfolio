@@ -1,5 +1,7 @@
-import { getPostBySlug, getJournalPosts } from '@/lib/markdown';
-import { notFound } from 'next/navigation';
+import { getPostBySlug, getJournalPosts } from "@/lib/markdown";
+import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -7,16 +9,17 @@ interface Props {
 
 // Next.js 14 Static Generation Hook
 export async function generateStaticParams() {
-  const posts = getJournalPosts();
-  
-  // CRITICAL: If no markdown files are found yet, return a temporary fallback 
-  // array so the Next.js compiler doesn't crash with a "missing function" error.
-  if (posts.length === 0) {
-    return [{ slug: 'placeholder' }];
+  // Adjust 'content/journal' to wherever your .md / .mdx files live in your project
+  const postsDirectory = path.join(process.cwd(), "_journal");
+
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
   }
-  
-  return posts.map((post) => ({
-    slug: post.slug,
+
+  const filenames = fs.readdirSync(postsDirectory);
+
+  return filenames.map((filename) => ({
+    slug: filename.replace(/\.(md|mdx|json)$/, ""),
   }));
 }
 
@@ -27,7 +30,7 @@ export default async function JournalPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
 
   // Allow the placeholder or missing files to degrade gracefully to a 404 instead of crashing the site build
-  if (!post || slug === 'placeholder') {
+  if (!post || slug === "placeholder") {
     notFound();
   }
 
@@ -43,9 +46,9 @@ export default async function JournalPostPage({ params }: Props) {
           {post.title}
         </h1>
       </header>
-{/* Styled Markdown Output */}
-<div 
-  className="prose prose-invert max-w-none text-slate-300 context-layout
+      {/* Styled Markdown Output */}
+      <div
+        className="prose prose-invert max-w-none text-slate-300 context-layout
              
              {/* FORCE ELEMENT GAP SPACING */}
              [&>p]:mb-6 [&>p]:leading-relaxed
@@ -59,11 +62,14 @@ export default async function JournalPostPage({ params }: Props) {
              {/* INLINE CODE STYLE */}
              prose-code:font-mono prose-code:bg-slate-900 prose-code:text-blue-400 
              prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm"
-  dangerouslySetInnerHTML={{ __html: post.content }} 
-/>
-      
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+
       <div className="mt-12 pt-6 border-t border-slate-900">
-        <a href="/" className="text-sm font-mono text-blue-500 hover:text-blue-400">
+        <a
+          href="/"
+          className="text-sm font-mono text-blue-500 hover:text-blue-400"
+        >
           &larr; Back to Dashboard
         </a>
       </div>

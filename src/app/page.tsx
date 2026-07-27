@@ -71,7 +71,7 @@ export default function HomePage() {
             </div>
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-900">
               <Link
-                href="/journal/ad-applocker-lab"
+                href="/journal/2026-07-15_win11_server2022_integration_journal"
                 className="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
               >
                 Read Journal Entry →
@@ -204,7 +204,7 @@ export default function HomePage() {
         <div className="space-y-4 pt-2">
           {/* Milestone 1 */}
           <Link
-            href="/journal/it-support-fundamentals-complete"
+            href="/journal/2026-06-29-technical-review-and-completing-os-fundamentals"
             className="block p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-blue-500 dark:hover:border-blue-400 transition-all group"
           >
             <div className="flex items-center justify-between mb-2">
@@ -225,7 +225,7 @@ export default function HomePage() {
 
           {/* Milestone 2 */}
           <Link
-            href="/journal/portfolio-infrastructure-setup"
+            href="/journal/2026-06-26-building-and-deploying-decoupled-nextjs-portfolio"
             className="block p-5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-blue-500 dark:hover:border-blue-400 transition-all group"
           >
             <div className="flex items-center justify-between mb-2">
